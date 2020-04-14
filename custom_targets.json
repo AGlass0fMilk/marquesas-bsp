@@ -1,0 +1,13 @@
+{
+    "MARQ_CM7": {
+        "inherits": [
+            "STM32H745I_CM7"
+        ]
+    },
+    "MARQ_CM4": {
+        "inherits": [
+            "STM32H745I_CM4"
+        ]
+    }
+}
+        
