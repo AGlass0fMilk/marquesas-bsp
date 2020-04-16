@@ -1,7 +1,15 @@
 {
     "MARQ_CM7": {
         "inherits": [
-            "STM32H745I_CM7"
+            "STM32H745xI"
+        ],
+        "core": "Cortex-M7FD",
+        "mbed_rom_start": "0x08000000",
+        "mbed_rom_size": "0x100000",
+        "mbed_ram_start": "0x24000000",
+        "mbed_ram_size": "0x80000",
+        "macros_add": [
+            "CORE_CM7"
         ]
     },
     "MARQ_CM4": {
