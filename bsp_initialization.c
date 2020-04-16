@@ -5,6 +5,8 @@
  *      Author: gdbeckstein
  */
 
+#include "sdram_ext.h"
+
 /**
  * @brief Setup the target board-specific configuration
  * of the microcontroller
@@ -16,7 +18,12 @@
  * @retval None
  */
 void TargetBSP_Init(void) {
-    /** Do nothing */
+
+    // Only initialize external SRAM for the M7 core
+#if defined(CORE_CM7)
+    ext_sdram_init();
+#endif
+
 }
 
 

@@ -10,7 +10,7 @@
 #ifndef MARQUESAS_BSP_SRAM_EXT_H_
 #define MARQUESAS_BSP_SRAM_EXT_H_
 
-/* FMC initialization function */
-void ext_sram_init(void);
+/* FMC initialization for external SRAM */
+void ext_sdram_init(void);
 
 #endif /* MARQUESAS_BSP_SRAM_EXT_H_ */
