@@ -281,6 +281,21 @@ void ext_sdram_init(void) {
      ReadBurst          = FMC_SDRAM_RBURST_ENABLE
      ReadPipeDelay      = FMC_SDRAM_RPIPE_DELAY_0*/
 
+    /**
+     * TODO - Fine-tune timing and FMC clock
+     *
+     * I was having issues when sourcing the FMC clock with a divider of 2.
+     * I believe the input clock to the FMC is set to the CM7 core clock over 2,
+     * so this divider would yield an SDRAM clock of 120MHz, which should be okay for
+     * our memory chip.
+     *
+     * Changing the FMC divider input to 3 (the only other option) appears to work reliably
+     * Theoretically this would mean the SDRAM clock is 80MHz...
+     *
+     * We may be able to do some additional testing and adjust the clock configuration
+     * for the FMC source to achieve a maximum stable frequency (I'd say 100MHz maybe?)
+     */
+
     FMC_Bank5_6_R->SDCR[0] = 0x00001D60; // Configure bank 5 (SDRAM 1)
     FMC_Bank5_6_R->SDCR[1] = 0x000002D0; // Disable bank 6 (SDRAM 2)
 
