@@ -281,9 +281,21 @@ void ext_sdram_init(void) {
      ReadBurst          = FMC_SDRAM_RBURST_ENABLE
      ReadPipeDelay      = FMC_SDRAM_RPIPE_DELAY_0*/
 
-    FMC_Bank5_6_R->SDCR[0] = 0x00001960; // Configure bank 5 (SDRAM 1)
+    FMC_Bank5_6_R->SDCR[0] = 0x00001D60; // Configure bank 5 (SDRAM 1)
     FMC_Bank5_6_R->SDCR[1] = 0x000002D0; // Disable bank 6 (SDRAM 2)
-    FMC_Bank5_6_R->SDTR[0] = 0x01115351;
+
+    /**
+     * Timing parameters calculation
+     * TRCD = 20ns = 3 clock cycles (20ns * 120MHz = 2.4 => 3 clock cycles)
+     * TRP = 20ns = 3 clock cycles
+     * TWR = 1CLK + 7ns = 2 clock cycles
+     * TRC = 70ns = 8.4 => 9 clock cycles
+     * TRAS = 42ns = 5.04 => 6 clock cycles
+     * TXSR = 77ns = 9.24 => 10 clock cycles
+     * TMRD = 2 cycles
+     */
+
+    FMC_Bank5_6_R->SDTR[0] = 0x02218591;
     FMC_Bank5_6_R->SDTR[1] = 0x0FFFFFFF;
 
     /* SDRAM initialization sequence */
@@ -334,7 +346,9 @@ void ext_sdram_init(void) {
      * = 3650 = 0xE42
      */
     tmpreg = FMC_Bank5_6_R->SDRTR;
-    FMC_Bank5_6_R->SDRTR = (tmpreg | (0x00000E42 << 1));
+//    FMC_Bank5_6_R->SDRTR = (tmpreg | (0x00000E42 << 1));
+    FMC_Bank5_6_R->SDRTR = (tmpreg | (0x000001C0 << 1));
+
 
     /* Disable write protection */
     tmpreg = FMC_Bank5_6_R->SDCR[1];
