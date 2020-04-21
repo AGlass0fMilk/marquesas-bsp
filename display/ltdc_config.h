@@ -16,6 +16,8 @@
  */
 int ltdc_init(void);
 
+// TODO - provide access to LTDC instance handle?
+
 
 
 #endif /* MARQUESAS_BSP_DISPLAY_LTDC_CONFIG_H_ */

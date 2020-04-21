@@ -6,6 +6,7 @@
  */
 
 #include "sdram_ext.h"
+#include "ltdc_config.h"
 
 /**
  * @brief Setup the target board-specific configuration
@@ -19,8 +20,9 @@
  */
 void TargetBSP_Init(void) {
 
-    // Only initialize external SRAM for the M7 core
+    // Some peripherals are only initialized by the M7 at startup
 #if defined(CORE_CM7)
+    // Initialize external SDRAM for frame buffer
     ext_sdram_init();
 #endif
 

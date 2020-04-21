@@ -5,7 +5,7 @@
  *      Author: gdbeckstein
  */
 
-#include "stm32h7xx_hal_ltdc.h"
+#include "stm32h7xx.h"
 
 /**
 * @brief LTDC MSP Initialization
