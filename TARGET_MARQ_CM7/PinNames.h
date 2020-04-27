@@ -305,6 +305,16 @@ typedef enum {
     PK_2  = 0xA2,
     PK_3  = 0xA3,
 
+    /**
+     * Pins for QSPI
+     */
+    QSPI_IO0 = PD_11,
+    QSPI_IO1 = PD_12,
+    QSPI_IO2 = PE_2,
+    QSPI_IO3 = PF_6,
+    QSPI_SCK = PB_2,
+    QSPI_CSN = PG_6,
+
     // ADC internal channels
     ADC_TEMP = 0xF0,
     ADC_VREF = 0xF1,
